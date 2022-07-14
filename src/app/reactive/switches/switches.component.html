@@ -1,7 +1,7 @@
 <h2>Reactivos: Switches</h2>
 <hr>
 
-<form>
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
 
     <!-- Radio -->
     <div class="row mb-3">
@@ -14,7 +14,7 @@
                 <input class="form-check-input" 
                         type="radio" 
                         value="M"
-                        name="radioGenero" 
+                        formControlName="genero"
                         id="radioMasculino">
 
                 <label class="form-check-label" for="radioMasculino">
@@ -28,7 +28,7 @@
                 <input class="form-check-input" 
                         type="radio" 
                         value="F"
-                        name="radioGenero" 
+                        formControlName="genero"
                         id="readioFemenino">
 
                 <label class="form-check-label" for="readioFemenino">
@@ -52,6 +52,7 @@
             <div class="form-check form-switch mt-2">
                 <input class="form-check-input" 
                         type="checkbox" 
+                        formControlName="notificaciones"
                         role="switch"
                         id="flexSwitchCheckChecked">
                 <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
@@ -72,7 +73,8 @@
             <div class="form-check">
                 <input class="form-check-input" 
                         type="checkbox" 
-                        id="flexCheckDefault">
+                        id="flexCheckDefault"
+                        formControlName="terminos">
 
                 <label class="form-check-label" for="flexCheckDefault">
                   Términos y Condiciones
@@ -86,14 +88,14 @@
     <!-- Boton submit -->
     <div class="rw">
         <div class="col">
-            <button class="btn btn-primary float-end">
+            <button class="btn btn-primary float-end" type="submit">
                 Guardar
             </button>
         </div>
     </div>
 </form>
 
-<!-- <h5>Valor del formulario</h5>
+<h5>Valor del formulario</h5>
 <pre>{{miFormulario.value | json}}</pre>
 <br>
 
@@ -105,4 +107,4 @@
 <pre>{{miFormulario.valid}}</pre>
 <br>
 
-<pre>Condiciones: </pre> -->
+<!-- <pre>Condiciones: </pre> -->
