@@ -31,7 +31,7 @@
                             formControlName="email">
                     <span class="form-text text-danger"
                         *ngIf="campoInvalido('email')">
-                        El correo es obligatorio
+                        {{emailErrorMsg}}
                     </span>
                     
                     
@@ -61,8 +61,12 @@
                 <div class="col-sm-9">
                     <input type="password"
                             class="form-control"
-                            placeholder="Contraseña">
-                    
+                            placeholder="Contraseña"
+                            formControlName="password">
+                    <span class="form-text text-danger"
+                        *ngIf="campoInvalido('password')">
+                        La contraseña debe tener más de 6 caracteres
+                    </span>
                     
                 </div>
             </div>
@@ -74,7 +78,12 @@
                 <div class="col-sm-9">
                     <input type="password"
                             class="form-control"
-                            placeholder="Confirmar Contraseña">
+                            placeholder="Confirmar Contraseña"
+                            formControlName="password2">
+                    <span class="form-text text-danger"
+                        *ngIf="campoInvalido('password2')">
+                        Las contraseñas no coinciden
+                    </span>
                     
                     
                 </div>
@@ -82,7 +91,9 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-end">
+                    <button type="submit" 
+                            class="btn btn-primary float-end"
+                            [disabled]="miFormulario.pending">
                         Crear
                     </button>
                 </div>
@@ -94,6 +105,10 @@
 
 
 <h2>Form Valid: {{miFormulario.valid}}</h2>
+<h2>Form Status: {{miFormulario.status}}</h2>
+<h2>Form Pending: {{miFormulario.pending}}</h2>
+<h2>Form Errors:</h2>
+<pre>{{miFormulario.errors | json}}</pre>
 
 <h5>Nombre</h5>
 <pre>{{miFormulario.controls['nombre'].errors | json}}</pre>
@@ -103,3 +118,9 @@
 
 <h5>Username</h5>
 <pre>{{miFormulario.controls['username'].errors | json}}</pre>
+
+<h5>Password</h5>
+<pre>{{miFormulario.controls['password'].errors | json}}</pre>
+
+<h5>Confirmar</h5>
+<pre>{{miFormulario.controls['password2'].errors | json}}</pre>
